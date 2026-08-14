@@ -143,6 +143,13 @@ async function saveBooking(
 
     const booking = await tx.booking.create(createBookingObj);
 
+    if (booking.eventTypeId) {
+      await tx.eventType.update({
+        where: { id: booking.eventTypeId },
+        data: { bookingCount: { increment: 1 } },
+      });
+    }
+
     return { ...booking, userUuid: booking.user?.uuid ?? null };
   });
 }
