@@ -17,6 +17,7 @@ type AppsRouterHandlerCache = {
   addNotificationsSubscription?: typeof import("./addNotificationsSubscription.handler").addNotificationsSubscriptionHandler;
   removeNotificationsSubscription?: typeof import("./removeNotificationsSubscription.handler").removeNotificationsSubscriptionHandler;
   markNoShow?: typeof import("./markNoShow.handler").markNoShow;
+  myBookingStats?: typeof import("./myBookingStats.handler").myBookingStatsHandler;
 };
 
 export const loggedInViewerRouter = router({
@@ -63,5 +64,9 @@ export const loggedInViewerRouter = router({
   markNoShow: authedProcedure.input(ZNoShowInputSchema).mutation(async (opts) => {
     const { markNoShow } = await import("./markNoShow.handler");
     return markNoShow(opts);
+  }),
+  myBookingStats: authedProcedure.query(async ({ ctx }) => {
+    const { myBookingStatsHandler } = await import("./myBookingStats.handler");
+    return myBookingStatsHandler({ ctx });
   }),
 });
