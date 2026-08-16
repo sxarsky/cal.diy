@@ -181,6 +181,8 @@ model EventType {
   teamId                             Int?
   hashedLink                         HashedLink[]
   bookings                           Booking[]
+  bookingCount                       Int                    @default(0)
+  cancellationCount                  Int                    @default(0)
   availability                       Availability[]
   webhooks                           Webhook[]
   destinationCalendar                DestinationCalendar?

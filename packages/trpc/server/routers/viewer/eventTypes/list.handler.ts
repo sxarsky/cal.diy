@@ -28,6 +28,8 @@ export const listHandler = async ({ ctx }: ListOptions) => {
       slug: true,
       hidden: true,
       metadata: true,
+      bookingCount: true,
+      cancellationCount: true,
     },
   });
 };

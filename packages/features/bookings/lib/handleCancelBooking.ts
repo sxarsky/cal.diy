@@ -414,6 +414,16 @@ async function handler(input: CancelBookingInput, dependencies?: Dependencies) {
     }
   }
 
+  // Keep per-event-type booking counters up to date when a booking is cancelled.
+  if (bookingToDelete.eventTypeId) {
+    await prisma.eventType.update({
+      where: { id: bookingToDelete.eventTypeId },
+      data: {
+        cancellationCount: { increment: 1 },
+      },
+    });
+  }
+
   /** TODO: Remove this without breaking functionality */
   if (bookingToDelete.location === DailyLocationType) {
     bookingToDelete.user.credentials.push({
