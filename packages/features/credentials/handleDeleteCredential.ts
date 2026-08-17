@@ -11,6 +11,8 @@ import { eventTypeMetaDataSchemaWithTypedApps } from "@calcom/app-store/zod-util
 import { sendCancelledEmailsAndSMS } from "@calcom/emails/email-manager";
 import { getCalEventResponses } from "@calcom/features/bookings/lib/getCalEventResponses";
 import { deletePayment } from "@calcom/features/bookings/lib/payment/deletePayment";
+import { CalendarCacheEventRepository } from "@calcom/features/calendar-subscription/lib/cache/CalendarCacheEventRepository";
+import { FeaturesRepository } from "@calcom/features/flags/features.repository";
 import { deleteWebhookScheduledTriggers } from "@calcom/features/webhooks/lib/scheduleTrigger";
 import { buildNonDelegationCredential } from "@calcom/lib/delegationCredential";
 import { isPrismaObjOrUndefined } from "@calcom/lib/isPrismaObj";
@@ -461,7 +463,7 @@ const handleDeleteCredential = async ({
 
       const calendarIds = calendars?.map((cal) => cal.externalId);
 
-      await prisma.selectedCalendar.deleteMany({
+      const selectedCalendars = await prisma.selectedCalendar.findMany({
         where: {
           userId: userId,
           integration: credential.type as string,
@@ -469,7 +471,30 @@ const handleDeleteCredential = async ({
             in: calendarIds,
           },
         },
+        select: { id: true },
       });
+
+      const featuresRepository = new FeaturesRepository(prisma);
+
+      if (await featuresRepository.checkIfFeatureIsEnabledGlobally("calendar-subscription-cache")) {
+        const calendarCacheEventRepository = new CalendarCacheEventRepository(prisma);
+
+        for (const selectedCalendar of selectedCalendars) {
+          await calendarCacheEventRepository.deleteAllBySelectedCalendarId(selectedCalendar.id);
+        }
+      }
+
+      if (await featuresRepository.checkIfFeatureIsEnabledGlobally("calendar-cache")) {
+        await prisma.selectedCalendar.deleteMany({
+          where: {
+            userId: userId,
+            integration: credential.type as string,
+            externalId: {
+              in: calendarIds,
+            },
+          },
+        });
+      }
     } catch (error) {
       console.warn(
         `Error deleting selected calendars for userId: ${userId} integration: ${credential.type}`,
