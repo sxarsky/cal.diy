@@ -46,7 +46,7 @@ jobs:
           skyrampLicenseFile: ${{ secrets.SKYRAMP_LICENSE_FILE }}
           anthropicApiKey: ${{ secrets.SKYRAMP_TESTBOT_API_KEY }}
           githubToken: ${{ steps.skyramp-testbot-app-token.outputs.token }}
-          skyrampMcpVersion: "0.4.0-rc.1"
+          skyrampMcpVersion: "0.4.0-rc.2"
           skyrampExecutorVersion: "v1.3.44"
           generatedTestsMode: separate-branch
 
