@@ -8,11 +8,11 @@ async function loginAsSeededAdminAndGoToOAuthSettings(page: Page) {
   await page.goto("/auth/login");
 
   // Seeded admin user from scripts/seed.ts
-  await page.getByTestId("login-form").locator("#email").fill("admin@example.com");
-  await page.getByTestId("login-form").locator("#password").fill("ADMINadmin2022!");
+  await page.getByTestId("login-credentials-form").locator("#email").fill("admin@example.com");
+  await page.getByTestId("login-credentials-form").locator("#password").fill("ADMINadmin2022!");
 
   const responsePromise = page.waitForResponse(/\/api\/auth\/callback\/credentials/);
-  await page.getByTestId("login-form").locator('[type="submit"]').click();
+  await page.getByTestId("login-credentials-form").locator('[type="submit"]').click();
   await responsePromise;
 
   await page.goto("/settings/developer/oauth");

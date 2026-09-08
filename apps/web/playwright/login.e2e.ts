@@ -39,7 +39,7 @@ test.describe("user can login & logout successfully", async () => {
       await page.locator("[data-testid=logout-btn]").click();
 
       // Reroute to the home page to check if the login form shows up
-      await expect(page.locator(`[data-testid=login-form]`)).toBeVisible();
+      await expect(page.locator(`[data-testid=login-credentials-form]`)).toBeVisible();
     });
   });
 });
@@ -54,7 +54,7 @@ test.describe("Login and logout tests", () => {
 
     // check if we are at the login page
     await page.goto("/");
-    await expect(page.locator(`[data-testid=login-form]`)).toBeVisible();
+    await expect(page.locator(`[data-testid=login-credentials-form]`)).toBeVisible();
   });
 
   test.describe("Login flow validations", async () => {

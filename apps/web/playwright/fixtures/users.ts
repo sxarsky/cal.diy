@@ -946,7 +946,7 @@ export async function login(
   page: Page
 ) {
   // get locators
-  const loginLocator = page.locator("[data-testid=login-form]");
+  const loginLocator = page.locator("[data-testid=login-credentials-form]");
   const emailLocator = loginLocator.locator("#email");
   const passwordLocator = loginLocator.locator("#password");
   const signInLocator = loginLocator.locator('[type="submit"]');

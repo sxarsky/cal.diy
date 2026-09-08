@@ -11,13 +11,13 @@ test.describe("Locale-specific pages must not 404", () => {
       test(`/${locale}/login shouldn't 404`, async ({ page }) => {
         const response = await page.goto(`/${locale}/login`);
         expect(response?.status()).not.toBe(404);
-        await expect(page.getByTestId("login-form")).toBeVisible();
+        await expect(page.getByTestId("login-credentials-form")).toBeVisible();
       });
 
       test(`/${locale}/auth/login shouldn't 404`, async ({ page }) => {
         const response = await page.goto(`/${locale}/auth/login`);
         expect(response?.status()).not.toBe(404);
-        await expect(page.getByTestId("login-form")).toBeVisible();
+        await expect(page.getByTestId("login-credentials-form")).toBeVisible();
       });
 
       test(`/${locale}/[user] page shouldn't 404`, async ({ page, users }) => {
