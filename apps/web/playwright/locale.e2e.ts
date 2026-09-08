@@ -10,6 +10,8 @@ test.describe("unauthorized user sees correct translations (de)", async () => {
   });
 
   test("should use correct translations and html attributes", async ({ page }) => {
+    const pageErrors: Error[] = [];
+    page.on("pageerror", (error) => pageErrors.push(error));
     await page.goto("/");
     // we dont need to wait for styles and images, only for dom
     await page.waitForLoadState("domcontentloaded");
@@ -18,10 +20,12 @@ test.describe("unauthorized user sees correct translations (de)", async () => {
     await page.locator("html[dir=ltr]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toBeVisible();
+      await expect(submitButton).toHaveText("Weiter");
     }
+
+    expect(pageErrors).toHaveLength(0);
   });
 });
 
@@ -31,6 +35,8 @@ test.describe("unauthorized user sees correct translations (ar)", async () => {
   });
 
   test("should use correct translations and html attributes", async ({ page }) => {
+    const pageErrors: Error[] = [];
+    page.on("pageerror", (error) => pageErrors.push(error));
     await page.goto("/");
     await page.waitForLoadState("domcontentloaded");
 
@@ -38,10 +44,12 @@ test.describe("unauthorized user sees correct translations (ar)", async () => {
     await page.locator("html[dir=rtl]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toBeVisible();
+      await expect(submitButton).toHaveText("متابعة");
     }
+
+    expect(pageErrors).toHaveLength(0);
   });
 });
 
@@ -51,6 +59,8 @@ test.describe("unauthorized user sees correct translations (zh)", async () => {
   });
 
   test("should use correct translations and html attributes", async ({ page }) => {
+    const pageErrors: Error[] = [];
+    page.on("pageerror", (error) => pageErrors.push(error));
     await page.goto("/");
     await page.waitForLoadState("domcontentloaded");
 
@@ -58,10 +68,12 @@ test.describe("unauthorized user sees correct translations (zh)", async () => {
     await page.locator("html[dir=ltr]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toBeVisible();
+      await expect(submitButton).toHaveText(/继续|繼續/);
     }
+
+    expect(pageErrors).toHaveLength(0);
   });
 });
 
@@ -71,6 +83,8 @@ test.describe("unauthorized user sees correct translations (zh-CN)", async () =>
   });
 
   test("should use correct translations and html attributes", async ({ page }) => {
+    const pageErrors: Error[] = [];
+    page.on("pageerror", (error) => pageErrors.push(error));
     await page.goto("/");
     await page.waitForLoadState("domcontentloaded");
 
@@ -78,10 +92,12 @@ test.describe("unauthorized user sees correct translations (zh-CN)", async () =>
     await page.locator("html[dir=ltr]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toBeVisible();
+      await expect(submitButton).toHaveText("继续");
     }
+
+    expect(pageErrors).toHaveLength(0);
   });
 });
 
@@ -91,6 +107,8 @@ test.describe("unauthorized user sees correct translations (zh-TW)", async () =>
   });
 
   test("should use correct translations and html attributes", async ({ page }) => {
+    const pageErrors: Error[] = [];
+    page.on("pageerror", (error) => pageErrors.push(error));
     await page.goto("/");
     await page.waitForLoadState("domcontentloaded");
 
@@ -98,10 +116,12 @@ test.describe("unauthorized user sees correct translations (zh-TW)", async () =>
     await page.locator("html[dir=ltr]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toBeVisible();
+      await expect(submitButton).toHaveText("繼續");
     }
+
+    expect(pageErrors).toHaveLength(0);
   });
 });
 
@@ -111,6 +131,8 @@ test.describe("unauthorized user sees correct translations (pt)", async () => {
   });
 
   test("should use correct translations and html attributes", async ({ page }) => {
+    const pageErrors: Error[] = [];
+    page.on("pageerror", (error) => pageErrors.push(error));
     await page.goto("/");
     await page.waitForLoadState("domcontentloaded");
 
@@ -118,10 +140,12 @@ test.describe("unauthorized user sees correct translations (pt)", async () => {
     await page.locator("html[dir=ltr]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toBeVisible();
+      await expect(submitButton).toHaveText("Continuar");
     }
+
+    expect(pageErrors).toHaveLength(0);
   });
 });
 
@@ -131,6 +155,8 @@ test.describe("unauthorized user sees correct translations (pt-br)", async () =>
   });
 
   test("should use correct translations and html attributes", async ({ page }) => {
+    const pageErrors: Error[] = [];
+    page.on("pageerror", (error) => pageErrors.push(error));
     await page.goto("/");
     await page.waitForLoadState("domcontentloaded");
 
@@ -138,10 +164,12 @@ test.describe("unauthorized user sees correct translations (pt-br)", async () =>
     await page.locator("html[dir=ltr]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toBeVisible();
+      await expect(submitButton).toHaveText("Continuar");
     }
+
+    expect(pageErrors).toHaveLength(0);
   });
 });
 
@@ -151,6 +179,8 @@ test.describe("unauthorized user sees correct translations (es-419)", async () =
   });
 
   test("should use correct translations and html attributes", async ({ page }) => {
+    const pageErrors: Error[] = [];
+    page.on("pageerror", (error) => pageErrors.push(error));
     await page.goto("/");
     await page.waitForLoadState("domcontentloaded");
 
@@ -159,10 +189,12 @@ test.describe("unauthorized user sees correct translations (es-419)", async () =
     await page.locator("html[dir=ltr]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toBeVisible();
+      await expect(submitButton).toHaveText("Continuar");
     }
+
+    expect(pageErrors).toHaveLength(0);
   });
 });
 
