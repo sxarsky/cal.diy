@@ -18,9 +18,8 @@ test.describe("unauthorized user sees correct translations (de)", async () => {
     await page.locator("html[dir=ltr]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toHaveText("Weiter");
     }
   });
 });
@@ -38,9 +37,8 @@ test.describe("unauthorized user sees correct translations (ar)", async () => {
     await page.locator("html[dir=rtl]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toHaveText("متابعة");
     }
   });
 });
@@ -58,9 +56,8 @@ test.describe("unauthorized user sees correct translations (zh)", async () => {
     await page.locator("html[dir=ltr]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toHaveText("继续");
     }
   });
 });
@@ -78,9 +75,8 @@ test.describe("unauthorized user sees correct translations (zh-CN)", async () =>
     await page.locator("html[dir=ltr]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toHaveText("继续");
     }
   });
 });
@@ -98,9 +94,8 @@ test.describe("unauthorized user sees correct translations (zh-TW)", async () =>
     await page.locator("html[dir=ltr]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toHaveText("繼續");
     }
   });
 });
@@ -118,9 +113,8 @@ test.describe("unauthorized user sees correct translations (pt)", async () => {
     await page.locator("html[dir=ltr]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toHaveText("Continuar");
     }
   });
 });
@@ -138,9 +132,8 @@ test.describe("unauthorized user sees correct translations (pt-br)", async () =>
     await page.locator("html[dir=ltr]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toHaveText("Continuar");
     }
   });
 });
@@ -159,9 +152,8 @@ test.describe("unauthorized user sees correct translations (es-419)", async () =
     await page.locator("html[dir=ltr]").waitFor({ state: "attached" });
 
     {
-      const subtitle = page.getByTestId("login-subtitle");
-      await expect(subtitle).toBeVisible();
-      await expect(subtitle).not.toHaveText(/Welcome back/i);
+      const submitButton = page.locator('[data-testid="login-form"] button[type="submit"]');
+      await expect(submitButton).toHaveText("Continuar");
     }
   });
 });
