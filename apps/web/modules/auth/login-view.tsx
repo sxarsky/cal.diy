@@ -186,10 +186,6 @@ export default function Login({
             <h1 className="font-cal text-xl font-bold text-emphasis">Cal.diy</h1>
           </div>
 
-          {/* Heading */}
-          <p className="mb-8 text-center text-sm text-subtle" data-testid="login-subtitle">
-            {twoFactorRequired ? t("2fa_code") : t("welcome_back_sign_in")}
-          </p>
 
           <FormProvider {...methods}>
             {/* Social Login Buttons */}
