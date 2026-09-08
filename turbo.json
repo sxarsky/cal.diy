@@ -312,7 +312,8 @@
     "B2_APPLICATION_KEY_ID",
     "B2_APPLICATION_KEY",
     "B2_BUCKET_ID",
-    "B2_BUCKET_NAME"
+    "B2_BUCKET_NAME",
+    "SKYRAMP_UI_PASSWORD"
   ],
   "tasks": {
     "@calcom/web#copy-app-store-static": {
