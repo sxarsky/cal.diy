@@ -267,9 +267,6 @@ export default function Login({
                   <Field>
                     <div className="flex w-full items-center justify-between">
                       <FieldLabel>{t("password")}</FieldLabel>
-                      <Link href="/auth/forgot-password" className="text-sm text-subtle hover:text-emphasis">
-                        {t("forgot")}
-                      </Link>
                     </div>
                     <InputGroup className="overflow-hidden">
                       <InputGroupInput
