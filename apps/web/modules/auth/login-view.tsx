@@ -241,7 +241,7 @@ export default function Login({
               </>
             )}
 
-            <form onSubmit={methods.handleSubmit(onSubmit)} noValidate data-testid="login-form">
+            <form onSubmit={methods.handleSubmit(onSubmit)} noValidate data-testid="login-credentials-form">
               <input defaultValue={csrfToken || undefined} type="hidden" hidden {...register("csrfToken")} />
 
               {!twoFactorRequired && (
