@@ -182,14 +182,10 @@ export default function Login({
         {/* Main Card */}
         <div className="w-full rounded-xl border border-subtle bg-default p-10 shadow-sm">
           {/* Logo */}
-          <div className="mb-2 text-center">
+          <div className="mb-3 text-center">
             <h1 className="font-cal text-xl font-bold text-emphasis">Cal.diy</h1>
           </div>
 
-          {/* Heading */}
-          <p className="mb-8 text-center text-sm text-subtle" data-testid="login-subtitle">
-            {twoFactorRequired ? t("2fa_code") : t("welcome_back_sign_in")}
-          </p>
 
           <FormProvider {...methods}>
             {/* Social Login Buttons */}
